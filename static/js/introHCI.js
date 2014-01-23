@@ -25,16 +25,22 @@ function initializePage() {
 }
 
 function submitUpdate(e) {
-    var id = $("#project").val();
+    var project = $("#project").val();
                           
     var wid = $("#width").val();
     var description = $("#description").val();
                           
-    $(id).animate({
+    $(project).animate({
         width: wid
     }, 1000);
+    
+    var temp = $(project).find(".project-description");
+    if (temp.length == 0) {
+        $(project).append("<div class='project-description'><p>Description of the project.</p></div>");
+    }
+    //$(project).append("<div class='project-description'><p>Description of the project.</p></div>");
                           
-    $(id + " .project-description").text(description);
+    $(project + " .project-description").text(description);
 }
 
 function projectClick(e) {
@@ -49,8 +55,9 @@ function projectClick(e) {
     var containingProject = $(this).closest(".project");
 
     var description = $(containingProject).find(".project-description");
+    
     if (description.length == 0) {
-
+        
        $(containingProject).append("<div class='project-description'><p>Description of the project.</p></div>");
 
     } else {
