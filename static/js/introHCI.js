@@ -17,23 +17,24 @@ function initializePage() {
 		$(".jumbotron p").toggleClass("active");
 	});
 
-	$("#submitBtn").click(function (e) {
-		var id = $("#project").val();
-
-		var wid = $("#width").val();
-		var description = $("#description").val();
-		
-		$(id).animate({
-			width: wid
-		}, 1000);
-
-		$(id + " .project-description").text(description);
-
-	});
+	$("#submitBtn").click(submitUpdate);
 
 	// Add any additional listeners here
 	// example: $("#div-id").click(functionToCall);
 	$("a.thumbnail").click(projectClick);
+}
+
+function submitUpdate(e) {
+    var id = $("#project").val();
+                          
+    var wid = $("#width").val();
+    var description = $("#description").val();
+                          
+    $(id).animate({
+        width: wid
+    }, 1000);
+                          
+    $(id + " .project-description").text(description);
 }
 
 function projectClick(e) {
